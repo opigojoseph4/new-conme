@@ -17,12 +17,31 @@ function follow(){
     document.querySelector('.page-follow').innerHTML = 'following';
 }
 
-function sigin(){
-    var a = document.querySelector('.login-form input');
-    if(a !== null){
-        document.querySelector('.demo').innerHTML = 'fill in the  form'
+
+
+
+const signUp = e=>{
+    let formData = {
+        fname:document.getElementById('UserName').value,
+        email:document.getElementById('email').value,
+        pwd:document.getElementById('pw').value
     }
+    localStorage.setItem('formData',JSON.stringify(formData));
+    console.log(localStorage.getItem("formData"));
+    e.preventDefault();
+    location.href ="home.html";
 }
+
+function dispData(){
+//console.log(JSON.parse(localStorage.getItem('formData')));
+if(localStorage.getItem('formData')){
+    let{fname,email,pwd} = JSON.parse(localStorage.getItem('formData'));
+
+var output = document.querySelector('.fa-user-circle');
+output.innerHTML = ` ${fname}`;
+}
+}
+dispData();
 
 
 
